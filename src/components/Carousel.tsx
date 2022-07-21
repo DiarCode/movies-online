@@ -12,7 +12,7 @@ const Carousel = () => {
         autoplay={{ delay: 5000, disableOnInteraction: true }}
         navigation={true}
         modules={[Navigation]}
-        className="w-full container rounded-xl h-[450px] md:h-[370px] sm:h-[200px]"
+        className="w-full container rounded-xl h-[200px] sm:h-[450px]"
       >
         <SwiperSlide>Slide 1</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>

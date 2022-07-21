@@ -20,7 +20,7 @@ const MoviesListGeneric: FC<MoviesListGenericProps> = ({
   return (
     <div className={`container ${className}`}>
       <div className="flex gap-1 items-center mb-5 cursor-pointer w-fit">
-        <h1 className="text-white text-2xl font-semibold ">{title}</h1>
+        <h1 className="text-white text-xl sm:text-2xl font-semibold ">{title}</h1>
         <svg
           className="w-[25px]"
           id="Layer_1"

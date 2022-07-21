@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import SearchHeader from "./UI/SearchHeader";
 import ProfileHeader from "./UI/ProfileHeader";
+import Burger from "./UI/Burger";
 
 const Header = () => {
   const [isMoviesHovered, setIsMoviesHovered] = useState(false);
@@ -18,8 +19,8 @@ const Header = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full relative container flex  items-center mx-auto py-5 z-20">
-        <div className="mr-6">
+      <div className=" w-full relative container flex items-center mx-auto py-5 z-20">
+        <div className="flex mr-6 flex-grow sm:flex-grow-0">
           <Link to="/">
             <div className="text-md font-semibold cursor-pointer text-white p-3 bg-red-600 rounded-md">
               FavMovie
@@ -27,7 +28,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <ul className="text-base text-gray-400 flex flex-shrink flex-grow items-center gap-4 font-normal ">
+        <ul className="hidden sm:flex text-base text-gray-400 flex-shrink flex-grow items-center gap-4 font-normal ">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -75,10 +76,12 @@ const Header = () => {
           <li>Serials</li>
         </ul>
 
-        <div className="flex gap-6 items-center">
+        <div className="flex gap-6 items-center mr-6 sm:mr-0">
           <SearchHeader />
           <ProfileHeader />
         </div>
+
+        <Burger />
       </div>
     </div>
   );

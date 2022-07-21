@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 const ProfileHeader = () => {
-  const [isDropdownHovered, setIsDropdownHovered] = useState(true);
+  const [isDropdownHovered, setIsDropdownHovered] = useState(false);
   const [isHoverd, setIsHoverd] = useState(false);
 
   const movieDropdownVisibility = classNames({

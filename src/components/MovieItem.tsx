@@ -32,7 +32,7 @@ const MovieItem: FC<MovieItemProps> = ({ item }) => {
         </p>
         <p
           className={`cursor-pointer text-sm ${
-            item.price === "Free" ? FREE_STYLE : PAID_STYLE
+            item.price === "Free" ? FREE_STYLE : SUBS_STYLE
           }`}
         >
           {item.price}

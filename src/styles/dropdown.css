@@ -1,0 +1,4 @@
+.moviesItem:hover .moviesDropdown {
+  opacity: 1;
+  visibility: visible;
+}

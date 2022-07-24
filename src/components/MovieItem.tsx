@@ -13,9 +13,9 @@ const MovieItem: FC<MovieItemProps> = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="min-w-[177px]">
+    <div className="min-w-[120px] sm:min-w-[177px]">
       <div
-        className="relative cursor-pointer w-full h-[240px] bg-black rounded-xl hover:scale-105 duration-200"
+        className="relative cursor-pointer w-full h-[183px] sm:h-[240px] bg-black rounded-xl hover:scale-105 duration-200"
         onMouseOver={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -27,11 +27,11 @@ const MovieItem: FC<MovieItemProps> = ({ item }) => {
         <img className="hover:opacity-70 duration-200 bg-gray-50" alt="" />
       </div>
       <div className="py-3">
-        <p className="cursor-pointer overflow-x-hidden whitespace-nowrap text-ellipsis text-white font-medium ">
+        <p className="cursor-pointer overflow-x-hidden whitespace-nowrap text-sm sm:text-base text-ellipsis text-white font-medium ">
           {item.name}
         </p>
         <p
-          className={`cursor-pointer text-sm ${
+          className={`cursor-pointer text-xs sm:text-sm ${
             item.price === "Free" ? FREE_STYLE : SUBS_STYLE
           }`}
         >

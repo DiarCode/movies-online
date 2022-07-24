@@ -34,7 +34,7 @@ const MoviesListGeneric: FC<MoviesListGenericProps> = ({
         </svg>
       </div>
 
-      <div className="flex items-start gap-6 overflow-x-auto">{content}</div>
+      <div className="flex items-start gap-4 overflow-x-auto">{content}</div>
     </div>
   );
 };

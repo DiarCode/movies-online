@@ -5,6 +5,7 @@ import BurgerButtons from "./BurgerButtons";
 
 const Burger = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const movieDropdownVisibility = classNames({
     "visible opacity-100": isOpen,
@@ -15,10 +16,22 @@ const Burger = () => {
     setIsOpen(!isOpen);
   };
 
+  const onMouseLeave = () => {
+    setIsHovered(false);
+  };
+  const onMouseEnter = () => {
+    setIsHovered(true);
+  };
+
   return (
-    <div className="block sm:hidden">
-      <div className="cursor-pointer" onClick={handleBurgerOpen}>
-        <BurgerButtons isOpen={isOpen} />
+    <div className="block lg:hidden">
+      <div
+        className="cursor-pointer"
+        onClick={handleBurgerOpen}
+        onMouseLeave={onMouseLeave}
+        onMouseOver={onMouseEnter}
+      >
+        <BurgerButtons isHovered={isHovered} isOpen={isOpen} />
       </div>
 
       <div

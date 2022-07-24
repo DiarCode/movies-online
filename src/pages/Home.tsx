@@ -12,7 +12,7 @@ export const mockAPI: IMovie[] = [
 
 const Home: FC = () => {
   return (
-    <div className="lg:container mx-auto ">
+    <div className="container mx-auto">
       <Header />
       <Carousel />
       <MoviesListGeneric

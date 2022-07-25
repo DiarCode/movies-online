@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, memo, useState } from "react";
 import { IMovie } from "../types";
 
 const SUBS_STYLE = "text-[#ea003d]";
@@ -9,7 +9,7 @@ interface MovieItemProps {
   item: IMovie;
 }
 
-const MovieItem: FC<MovieItemProps> = ({ item }) => {
+const MovieItem: FC<MovieItemProps> = memo(({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -40,6 +40,6 @@ const MovieItem: FC<MovieItemProps> = ({ item }) => {
       </div>
     </div>
   );
-};
+});
 
 export default MovieItem;

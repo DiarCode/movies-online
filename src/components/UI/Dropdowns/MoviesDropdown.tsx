@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
 const MOCK_GENRES = [
@@ -22,7 +22,7 @@ const MOCK_GENRES = [
   "Comedy",
 ];
 
-const MoviesDropdown = () => {
+const MoviesDropdown = memo(() => {
   const genersList = MOCK_GENRES.map((item, index) => (
     <div className="mb-2" key={index}>
       <Link to="/">{item}</Link>
@@ -106,6 +106,6 @@ const MoviesDropdown = () => {
       </div>
     </div>
   );
-};
+});
 
 export default MoviesDropdown;

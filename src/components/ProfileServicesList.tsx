@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
-const ProfileServicesList = () => {
+const ProfileServicesList = memo(() => {
   return (
     <>
       <Link to="/" className="flex">
@@ -45,7 +45,9 @@ const ProfileServicesList = () => {
           <div className="flex-grow">
             <img src="" alt="" className="w-[25px] h-[25px]" />
           </div>
-          <p className="text-base text-white font-medium">Activate sertificate</p>
+          <p className="text-base text-white font-medium">
+            Activate sertificate
+          </p>
         </div>
       </Link>
 
@@ -68,6 +70,6 @@ const ProfileServicesList = () => {
       </Link>
     </>
   );
-};
+});
 
 export default ProfileServicesList;

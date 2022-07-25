@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { Link } from "react-router-dom";
 
 import classNames from "classnames";
@@ -8,7 +8,7 @@ import Burger from "./UI/Burger";
 import LinkedLogo from "./UI/LinkedLogo";
 import MoviesDropdown from "./UI/Dropdowns/MoviesDropdown";
 
-const Header = () => {
+const Header = memo(() => {
   const [isMoviesHovered, setIsMoviesHovered] = useState(false);
 
   const movieDropdownVisibility = classNames({
@@ -55,6 +55,6 @@ const Header = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Header;

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import BurgerButtons from "./BurgerButtons";
 
-const Burger = () => {
+const Burger = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -56,6 +56,6 @@ const Burger = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Burger;

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 import ProfileServicesList from "../ProfileServicesList";
 
-const ProfileHeader = () => {
+const ProfileHeader = memo(() => {
   const [isDropdownHovered, setIsDropdownHovered] = useState(false);
   const [isHoverd, setIsHoverd] = useState(false);
 
@@ -80,6 +79,6 @@ const ProfileHeader = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ProfileHeader;

@@ -24,7 +24,7 @@ const MOCK_GENRES = [
 
 const MoviesDropdown = () => {
   const genersList = MOCK_GENRES.map((item, index) => (
-    <div className="mb-2">
+    <div className="mb-2" key={index}>
       <Link to="/">{item}</Link>
     </div>
   ));
@@ -100,11 +100,10 @@ const MoviesDropdown = () => {
           <Link to="/">New in subscription</Link>
         </div>
       </div>
-      
-      
+
       <div className="bg-slate-500 rounded-lg px-2">
-          <img src="" alt="" className="w-[300px] h-[300px] rounded-lg" />
-        </div>
+        <img src="" alt="" className="w-[300px] h-[300px] rounded-lg" />
+      </div>
     </div>
   );
 };

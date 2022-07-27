@@ -1,18 +1,29 @@
 import { FC, memo } from "react";
 import { IMovie } from "../types";
 import MovieItem from "./MovieItem";
+import MoviesItemSkeleton from "./Skeletons/MoviesItemSkeleton";
 
 interface MoviesListGenericProps {
-  moviesList: IMovie[];
+  data: IMovie[] | undefined;
+  isLoading: boolean;
+  isSuccess: boolean;
+  isError: boolean;
   title: string;
   className?: string;
 }
 
 const MoviesListGeneric: FC<MoviesListGenericProps> = memo(
-  ({ moviesList, title, className }) => {
-    const content = moviesList.map(item => (
-      <MovieItem item={item} key={item.id} />
-    ));
+  ({ data, isLoading, isSuccess, isError, title, className }) => {
+    let content;
+
+    if (isLoading || isError) {
+      content = [...new Array(10)].map((_, index) => (
+        <MoviesItemSkeleton key={index} />
+      ));
+    }
+    if (isSuccess) {
+      content = data?.map(item => <MovieItem item={item} key={item._id} />);
+    }
 
     return (
       <div className={`container ${className}`}>

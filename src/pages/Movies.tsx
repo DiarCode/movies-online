@@ -2,10 +2,37 @@ import React from "react";
 import GenresList from "../components/GenresList";
 import Header from "../components/Header";
 import MoviesFilter from "../components/MoviesFilter";
+import { useQuery } from "@tanstack/react-query";
+
 import MoviesListGeneric from "../components/MoviesListGeneric";
-import { mockAPI } from "./Home";
+import {
+  getNewMoviesList,
+  getRatedMoviesByGenre,
+  getRatedMoviesList,
+} from "../api/axios";
 
 const Movies = () => {
+  const {
+    data: newMovies,
+    isLoading: isNewLoading,
+    isSuccess: isNewSuccess,
+    isError: isNewError,
+  } = useQuery(["newMovies"], getNewMoviesList);
+
+  const {
+    data: ratedMovies,
+    isLoading: isRatedLoading,
+    isSuccess: isRatedSuccess,
+    isError: isRatedError,
+  } = useQuery(["ratedMovies"], getRatedMoviesList);
+
+  const {
+    data: ratedDramaMovies,
+    isLoading: isRatedDramaLoading,
+    isSuccess: isRatedDramaSuccess,
+    isError: isRatedDramaError,
+  } = useQuery(["ratedGenredMovies"], () => getRatedMoviesByGenre("accion"));
+
   return (
     <div className="lg:container mx-auto ">
       <Header />
@@ -27,7 +54,10 @@ const Movies = () => {
 
       <MoviesListGeneric
         title="Movie premieres"
-        moviesList={mockAPI}
+        data={newMovies}
+        isLoading={isNewLoading}
+        isSuccess={isNewSuccess}
+        isError={isNewError}
         className="mt-6"
       />
 
@@ -35,7 +65,19 @@ const Movies = () => {
 
       <MoviesListGeneric
         title="Popular now"
-        moviesList={mockAPI}
+        data={ratedMovies}
+        isLoading={isRatedLoading}
+        isSuccess={isRatedSuccess}
+        isError={isRatedError}
+        className="mt-6"
+      />
+
+      <MoviesListGeneric
+        title="The Best in Action"
+        data={ratedDramaMovies}
+        isLoading={isRatedDramaLoading}
+        isSuccess={isRatedDramaSuccess}
+        isError={isRatedDramaError}
         className="mt-6"
       />
     </div>

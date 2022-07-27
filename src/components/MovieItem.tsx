@@ -1,9 +1,10 @@
 import React, { FC, memo, useState } from "react";
+import { Link } from "react-router-dom";
 import { IMovie } from "../types";
 
-const SUBS_STYLE = "text-[#ea003d]";
+// const SUBS_STYLE = "text-[#ea003d]";
 const FREE_STYLE = "text-[#a5a1b2]";
-const PAID_STYLE = "text-blue";
+// const PAID_STYLE = "text-blue";
 
 interface MovieItemProps {
   item: IMovie;
@@ -12,6 +13,9 @@ interface MovieItemProps {
 const MovieItem: FC<MovieItemProps> = memo(({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSaveHovered, setIsSaveHovered] = useState(false);
+
+  const countriesNamesList = item.countries.map(country => country.name);
+  const movieDetails = [item.year, countriesNamesList].join(", ");
 
   const hoveredDetailsContent = isHovered && (
     <div className="rounded-xl absolute top-0 right-0 bottom-0 left-0 p-4 cursor-pointer bg-opacity-70 bg-black">
@@ -38,9 +42,9 @@ const MovieItem: FC<MovieItemProps> = memo(({ item }) => {
         </div>
 
         <div className="flex flex-col gap-1">
-          <p className="text-white text-xl font-bold">7,8</p>
+          <p className="text-white text-xl font-bold">{item.rating}</p>
           <p className="text-[#d9d7e0] text-xs font-normal overflow-x-hidden whitespace-nowrap text-ellipsis">
-            2021, Russia, Thriller
+            {movieDetails}
           </p>
           <p className="text-[#d9d7e0] text-xs font-normal overflow-x-hidden whitespace-nowrap text-ellipsis">
             101 minutes
@@ -51,7 +55,10 @@ const MovieItem: FC<MovieItemProps> = memo(({ item }) => {
   );
 
   return (
-    <div className="min-w-[120px] sm:min-w-[177px] pl-2 pt-2">
+    <Link
+      to={`/watch/${item._id}`}
+      className="min-w-[120px] sm:min-w-[177px] pl-2 pt-2"
+    >
       <div
         className="relative cursor-pointer w-full h-[183px] sm:h-[240px] bg-black rounded-xl hover:scale-105 duration-200"
         onMouseOver={() => setIsHovered(true)}
@@ -60,24 +67,20 @@ const MovieItem: FC<MovieItemProps> = memo(({ item }) => {
         {hoveredDetailsContent}
 
         <img
-          src="https://polarr-ppe-assets.s3-us-west-1.amazonaws.com/onboarding/01_02_preview_2x.jpg "
+          src={item.image}
           className="rounded-xl duration-200 bg-gray-500 object-cover h-full w-[120px] sm:w-[177px] "
           alt=""
         />
       </div>
       <div className="py-3">
         <p className="cursor-pointer overflow-x-hidden whitespace-nowrap text-ellipsis text-sm sm:text-base  text-white font-medium ">
-          {item.name}
+          {item.title}
         </p>
-        <p
-          className={`cursor-pointer text-xs sm:text-sm ${
-            item.price === "Free" ? FREE_STYLE : SUBS_STYLE
-          }`}
-        >
-          {item.price}
+        <p className={`cursor-pointer text-xs sm:text-sm ${FREE_STYLE}`}>
+          Free
         </p>
       </div>
-    </div>
+    </Link>
   );
 });
 

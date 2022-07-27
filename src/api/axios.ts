@@ -1,10 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { IGenre } from "../types";
 
-interface IPromiseResults {
-  results?: any;
-}
-
 const getServerOptions = (method: string, path: string) => {
   if (!method && !path) return;
 

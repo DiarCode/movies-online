@@ -3,7 +3,7 @@ import { IMovie } from "../types";
 
 const SUBS_STYLE = "text-[#ea003d]";
 const FREE_STYLE = "text-[#a5a1b2]";
-const PAID_STYLE = "text-blue";
+// const PAID_STYLE = "text-blue";
 
 interface MovieItemProps {
   item: IMovie;

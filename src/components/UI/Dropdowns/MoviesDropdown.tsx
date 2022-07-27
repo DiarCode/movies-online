@@ -1,5 +1,7 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
+import { getGenresList } from "../../../api/axios";
+import { useQuery } from "@tanstack/react-query";
 
 const MOCK_GENRES = [
   "Action",
@@ -23,9 +25,11 @@ const MOCK_GENRES = [
 ];
 
 const MoviesDropdown = memo(() => {
-  const genersList = MOCK_GENRES.map((item, index) => (
-    <div className="mb-2" key={index}>
-      <Link to="/">{item}</Link>
+  const { data } = useQuery(["dropdownGenresList, genresList"], getGenresList);
+
+  const genersList = data?.map(item => (
+    <div className="mb-2" key={item.uuid}>
+      <Link to="/">{item.name}</Link>
     </div>
   ));
 

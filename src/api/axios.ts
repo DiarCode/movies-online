@@ -8,8 +8,8 @@ const getServerOptions = (method: string, path: string) => {
     method,
     url: `https://movies-app1.p.rapidapi.com/api${path}`,
     headers: {
-      "X-RapidAPI-Key": "ead1815035msh64c02657aaa8896p1fb548jsn31715607626a",
-      "X-RapidAPI-Host": "movies-app1.p.rapidapi.com",
+      "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
+      "X-RapidAPI-Host": process.env.REACT_APP_HOST_NAME,
     },
   };
 
